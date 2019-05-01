@@ -20,21 +20,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @RestController
-public class MainController {
+@RequestMapping("/")
+public class RegisterController {
 
     @Autowired
     RegisterRepository repo;
 
-    @RequestMapping("/")
-    public String gethome() {
-        System.out.println("hello world12");
-        return "register.jsp";
-    }
+
 
     @PostMapping("/addUser")
-    public String adduser(@RequestBody registerUsers user) {
+    public registerUsers adduser(@RequestBody registerUsers user) {
         repo.save(user);
-        return "register.jsp";
+        return user ;
 
     }
 
