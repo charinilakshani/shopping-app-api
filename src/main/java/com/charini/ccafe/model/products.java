@@ -11,22 +11,20 @@ public class products {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int aid;
-
+    private int pId;
     private String productName;
     private String category;
     private int price;
-    private int quntity;
+    private int quantity;
     private String description;
-    private String Image;
+    private String image;
 
-
-    public int getAid() {
-        return aid;
+    public int getpId() {
+        return pId;
     }
 
-    public void setAid(int aid) {
-        this.aid = aid;
+    public void setpId(int pId) {
+        this.pId = pId;
     }
 
     public String getProductName() {
@@ -53,12 +51,12 @@ public class products {
         this.price = price;
     }
 
-    public int getQuntity() {
-        return quntity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuntity(int quntity) {
-        this.quntity = quntity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getDescription() {
@@ -70,23 +68,23 @@ public class products {
     }
 
     public String getImage() {
-        return Image;
+        return image;
     }
 
     public void setImage(String image) {
-        Image = image;
+        this.image = image;
     }
 
     @Override
     public String toString() {
         return "products{" +
-                "aid=" + aid +
+                "pId=" + pId +
                 ", productName='" + productName + '\'' +
                 ", category='" + category + '\'' +
                 ", price=" + price +
-                ", quntity=" + quntity +
+                ", quantity=" + quantity +
                 ", description='" + description + '\'' +
-                ", Image='" + Image + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
 }

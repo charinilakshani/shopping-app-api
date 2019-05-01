@@ -7,24 +7,23 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/category")
 public class CategoryController {
+
     @Autowired
     categoryRepository repo;
 
-    @GetMapping(path = "/allcategory")
+    @GetMapping
     public @ResponseBody
-    Iterable<category> getAllProducts() {
-        System.out.println("Fetching all products");
+    Iterable<category> getAllCategories() {
+        System.out.println("Fetching all categories");
         return repo.findAll();
     }
 
-    @PostMapping("/addcategory")
-    public category addNewProduct(category categories) {
-
+    @PostMapping
+    public category addNewCategory(category categories) {
         repo.save(categories);
         System.out.println(categories.getName() + " is added");
-
         return categories;
     }
 

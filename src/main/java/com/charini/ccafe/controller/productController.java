@@ -8,35 +8,35 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/product")
 public class productController {
 
     @Autowired
     productRepository repo;
 
 
-    @PostMapping("/addProduct")
+    @PostMapping
     public products addNewProduct(@RequestBody products product) {
         repo.save(product);
         System.out.println(product.getProductName() + " is added");
         return product;
     }
 
-    @GetMapping(path = "/all")
+    @GetMapping
     public @ResponseBody
     Iterable<products> getAllProducts() {
         System.out.println("Fetching all products");
         return repo.findAll();
     }
 
-    @GetMapping("{aid}")
+    @GetMapping("{pId}")
     @ResponseBody
-    public Optional<products> getUser(@PathVariable("aid") int aid) {
+    public Optional<products> getOneProduct(@PathVariable("pId") int pid) {
         System.out.println("wooooooo");
-        return repo.findById(aid);
+        return repo.findById(pid);
     }
 
-    @PutMapping(path = "/update")
+    @PutMapping
     public products updateProduct(@RequestBody products product) {
         System.out.println("working from back end");
         return repo.save(product);

@@ -2,24 +2,25 @@ package com.charini.ccafe.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
 @Entity
 public class registerUsers {
 	@Id
-	@GeneratedValue
-	private int aid;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int userId;
 	private String firstName;
 	private String secondName;
 	private String email;
 	private String password;
 	
 	public int getAid() {
-		return aid;
+		return userId;
 	}
 	public void setAid(int aid) {
-		this.aid = aid;
+		this.userId = aid;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -47,7 +48,7 @@ public class registerUsers {
 	}
 	@Override
 	public String toString() {
-		return "registerUser [aid=" + aid + ", firstName=" + firstName + ", secondName=" + secondName + ", email="
+		return "registerUser [userId=" + userId + ", firstName=" + firstName + ", secondName=" + secondName + ", email="
 				+ email + ", password=" + password + "]";
 	}
 	
