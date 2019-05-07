@@ -1,11 +1,10 @@
 package com.charini.ccafe.controller;
 
-import com.charini.ccafe.dao.CartRepository;
-import com.charini.ccafe.model.cart;
+import com.charini.ccafe.model.Cart;
+import com.charini.ccafe.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -16,12 +15,12 @@ public class CartController {
     CartRepository repo;
 
     @PostMapping
-    public cart addToCart(@RequestBody cart cart) {
+    public Cart addToCart(@RequestBody Cart cart) {
 
         int pId = cart.getpId();
         boolean c = repo.existsById(pId);
 
-        System.out.println("cart updated" + c);
+        System.out.println("Cart updated" + c);
         if (c == false) {
             return repo.save(cart);
         } else {
@@ -37,7 +36,7 @@ public class CartController {
 
 //    @GetMapping("{cartId}")
 //    @ResponseBody
-//    public Optional<cart> getOneCart(@PathVariable("cartId") int cartid) {
+//    public Optional<Cart> getOneCart(@PathVariable("cartId") int cartid) {
 //        System.out.println("one by one is working");
 //        return repo.findById(cartid);
 //    }
@@ -46,21 +45,21 @@ public class CartController {
 
     @GetMapping
     public @ResponseBody
-    Iterable<cart> getAllProducts() {
-        System.out.println("Fetching all products");
+    Iterable<Cart> getAllProducts() {
+        System.out.println("Fetching all Product");
         return repo.findAll();
     }
 
     @PutMapping
-    public cart updateCart(@RequestBody cart cart)
+    public Cart updateCart(@RequestBody Cart cart)
     {
         return repo.save(cart);
     }
 
     @GetMapping("{pId}")
     @ResponseBody
-    public Optional<cart> getoneaddTocartProduct(@PathVariable("pId") int pid) {
-        System.out.println("check cart is exists or not");
+    public Optional<Cart> getoneaddTocartProduct(@PathVariable("pId") int pid) {
+        System.out.println("check Cart is exists or not");
         return repo.findById(pid);
     }
 
@@ -75,7 +74,7 @@ public class CartController {
     }
 
  @PostMapping(path = "add/items")
-    public Iterable<cart> AddItemsToCart(@RequestBody Iterable<cart> items){
+    public Iterable<Cart> AddItemsToCart(@RequestBody Iterable<Cart> items){
         return repo.saveAll(items);
     }
   

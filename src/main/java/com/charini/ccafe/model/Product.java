@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class products {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,10 +77,10 @@ public class products {
 
     @Override
     public String toString() {
-        return "products{" +
+        return "Product{" +
                 "pId=" + pId +
                 ", productName='" + productName + '\'' +
-                ", category='" + category + '\'' +
+                ", Category='" + category + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
                 ", description='" + description + '\'' +

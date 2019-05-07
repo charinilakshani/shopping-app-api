@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class registerUsers {
+public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;

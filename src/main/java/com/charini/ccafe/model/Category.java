@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class category {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -30,7 +30,7 @@ public class category {
 
     @Override
     public String toString() {
-        return "category [id=" + id + ", name=" + name + "]";
+        return "Category [id=" + id + ", name=" + name + "]";
     }
 
 

@@ -1,7 +1,7 @@
 package com.charini.ccafe.controller;
 
-import com.charini.ccafe.dao.categoryRepository;
-import com.charini.ccafe.model.category;
+import com.charini.ccafe.model.Category;
+import com.charini.ccafe.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.*;
 public class CategoryController {
 
     @Autowired
-    categoryRepository repo;
+    CategoryRepository repo;
 
     @GetMapping
     public @ResponseBody
-    Iterable<category> getAllCategories() {
+    Iterable<Category> getAllCategories() {
         System.out.println("Fetching all categories");
         return repo.findAll();
     }
 
     @PostMapping
-    public category addNewCategory(category categories) {
+    public Category addNewCategory(Category categories) {
         repo.save(categories);
         System.out.println(categories.getName() + " is added");
         return categories;

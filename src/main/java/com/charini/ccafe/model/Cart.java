@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class cart {
+public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -69,7 +69,7 @@ public class cart {
 
     @Override
     public String toString() {
-        return "cart{" +
+        return "Cart{" +
                 "userId=" + userId +
                 ", pId=" + pId +
                 ", cartId=" + cartId +

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
 //    @Autowired
-//    productRepository repo
+//    ProductRepository repo
     // retreview the corresponding enter details
     //email
 
