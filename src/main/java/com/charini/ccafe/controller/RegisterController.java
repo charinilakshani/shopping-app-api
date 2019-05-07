@@ -34,6 +34,12 @@ public class RegisterController {
         repo.findByEmail(email);
         return repo.findByEmail(email);
     }
+
+//  @GetMapping("/{uid}")
+//    public registerUsers getUser(@PathVariable String uid){
+//        return repo.findById(uid).get();
+//    }
+
    
     @GetMapping
     public @ResponseBody

@@ -15,7 +15,7 @@ public class CartController {
     @Autowired
     CartRepository repo;
 
-    @PostMapping("/addToCart")
+    @PostMapping
     public cart addToCart(@RequestBody cart cart) {
 
         int pId = cart.getpId();
@@ -44,7 +44,7 @@ public class CartController {
 
 
 
-    @GetMapping(path = "/allCart")
+    @GetMapping
     public @ResponseBody
     Iterable<cart> getAllProducts() {
         System.out.println("Fetching all products");
@@ -73,6 +73,12 @@ public class CartController {
         }
         return false;
     }
+
+ @PostMapping(path = "add/items")
+    public Iterable<cart> AddItemsToCart(@RequestBody Iterable<cart> items){
+        return repo.saveAll(items);
+    }
+  
 
 }
 
