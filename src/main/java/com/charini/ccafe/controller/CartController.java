@@ -9,7 +9,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/cart")
+@RequestMapping("/carts")
 public class CartController {
     @Autowired
     CartRepository repo;
@@ -44,8 +44,7 @@ public class CartController {
 
 
     @GetMapping
-    public @ResponseBody
-    Iterable<Cart> getAllProducts() {
+    public Iterable<Cart> getAllProducts() {
         System.out.println("Fetching all Product");
         return repo.findAll();
     }
@@ -56,8 +55,7 @@ public class CartController {
         return repo.save(cart);
     }
 
-    @GetMapping("{pId}")
-    @ResponseBody
+    @GetMapping("/{pId}")
     public Optional<Cart> getoneaddTocartProduct(@PathVariable("pId") int pid) {
         System.out.println("check Cart is exists or not");
         return repo.findById(pid);
