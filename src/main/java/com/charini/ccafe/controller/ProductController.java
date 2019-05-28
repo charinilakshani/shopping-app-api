@@ -1,6 +1,7 @@
 package com.charini.ccafe.controller;
 
 import com.charini.ccafe.model.Product;
+import com.charini.ccafe.model.UserPrincipal;
 import com.charini.ccafe.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,4 +34,6 @@ public class ProductController {
     public Product updateProduct(@RequestBody Product product) {
         return repo.save(product);
     }
+
+
 }

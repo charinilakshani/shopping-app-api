@@ -15,13 +15,15 @@ public class User {
 	private String secondName;
 	private String email;
 	private String password;
-	
-	public int getAid() {
+
+	public int getUserId() {
 		return userId;
 	}
-	public void setAid(int aid) {
-		this.userId = aid;
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -46,12 +48,17 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	@Override
 	public String toString() {
-		return "registerUser [userId=" + userId + ", firstName=" + firstName + ", secondName=" + secondName + ", email="
-				+ email + ", password=" + password + "]";
+		return "User{" +
+				"userId=" + userId +
+				", firstName='" + firstName + '\'' +
+				", secondName='" + secondName + '\'' +
+				", email='" + email + '\'' +
+				", password='" + password + '\'' +
+				'}';
 	}
-	
 
-	
+
 }

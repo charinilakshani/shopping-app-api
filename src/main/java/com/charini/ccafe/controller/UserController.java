@@ -1,7 +1,9 @@
 package com.charini.ccafe.controller;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.charini.ccafe.model.Users;
 import com.charini.ccafe.repository.UserRepository;
 import com.charini.ccafe.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +31,9 @@ public class UserController {
 
     @GetMapping("{email}")
     @ResponseBody
-    public List<User> getOnebyemail(@PathVariable("email") String email) {
+    public Optional<User> getOnebyemail(@PathVariable("email") String email) {
         System.out.println("search user id");
-        repo.findByEmail(email);
+//        repo.findByEmail(email);
         return repo.findByEmail(email);
     }
 
@@ -40,7 +42,6 @@ public class UserController {
 //        return repo.findById(uid).get();
 //    }
 
-   
     @GetMapping
     public @ResponseBody
     Iterable<User> getUsers() {

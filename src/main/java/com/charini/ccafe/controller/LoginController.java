@@ -6,13 +6,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/login")
 public class LoginController {
 
-//    @Autowired
-//    ProductRepository repo
-    // retreview the corresponding enter details
-    //email
+//	@Autowired
+//	UserRepository repo;
+//
+//	@PostMapping
+//    public User login(@RequestBody User user) {
+//        return repo.findByEmailAndPassword(user.get, );
+//    }
 
 
 }
