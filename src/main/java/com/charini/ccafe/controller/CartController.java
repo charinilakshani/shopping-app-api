@@ -1,81 +1,86 @@
 package com.charini.ccafe.controller;
 
 import com.charini.ccafe.model.Cart;
+import com.charini.ccafe.model.User;
+import com.charini.ccafe.model.Users;
 import com.charini.ccafe.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
-
+@CrossOrigin()
 @RestController
-@RequestMapping("/carts")
+@RequestMapping("user/carts")
 public class CartController {
     @Autowired
     CartRepository repo;
 
     @PostMapping
-    public Cart addToCart(@RequestBody Cart cart) {
-
-        int pId = cart.getpId();
-        boolean c = repo.existsById(pId);
-
-        System.out.println("Cart updated" + c);
-        if (c == false) {
-            return repo.save(cart);
-        } else {
-            System.out.println(" perfectly working" + c);
-            int quant = cart.getQuantity();
-            int quantity = quant + 1;
-            System.out.println("Quntity" + quantity);
-            // call update method;
-            return repo.save(cart);
+    public Cart addNewItemToCart(@RequestBody Cart newItem) {
+        Cart cart = null;
+        for (Cart cartItem : getAllCarts()) {
+            //
+            if (Objects.equals(cartItem.getpId(), newItem.getpId()) &&
+                    Objects.equals(cartItem.getUserId(), newItem.getUserId())) {
+                cart = cartItem;
+            }
         }
+
+        if (cart == null) {
+            cart = newItem;
+        } else {
+
+            int qty = cart.getQuantity() + newItem.getQuantity();
+            cart.setQuantity(qty);
+        }
+        repo.save(cart);
+        System.out.println(cart.getUserId() + " added");
+
+        return cart;
     }
 
-//    @GetMapping("{cartId}")
-//    @ResponseBody
-//    public Optional<Cart> getOneCart(@PathVariable("cartId") int cartid) {
-//        System.out.println("one by one is working");
-//        return repo.findById(cartid);
-//    }
-
-
-
     @GetMapping
-    public Iterable<Cart> getAllProducts() {
-        System.out.println("Fetching all Product");
+    public Iterable<Cart> getAllCarts() {
+        System.out.println("get al cart");
         return repo.findAll();
     }
 
     @PutMapping
-    public Cart updateCart(@RequestBody Cart cart)
-    {
+    public Cart updateCart(@RequestBody Cart cart) {
         return repo.save(cart);
     }
 
-    @GetMapping("/{pId}")
-    public Optional<Cart> getoneaddTocartProduct(@PathVariable("pId") int pid) {
+    @GetMapping("/byId/{pId}")
+    public Optional<Cart> getOneAddToCartProduct(@PathVariable("pId") int pid) {
         System.out.println("check Cart is exists or not");
         return repo.findById(pid);
     }
 
-
-    @DeleteMapping(path="/{id}")
-    public boolean deleteCart(@PathVariable int id){
-        if(repo.existsById(id)){
-            repo.deleteById(id);
-            return true;
-        }
-        return false;
+    @GetMapping("/{userId}")
+    public List<Cart> getByUserId(@PathVariable("userId") int userId) {
+        return repo.findAllByUserId(userId);
     }
 
- @PostMapping(path = "add/items")
-    public Iterable<Cart> AddItemsToCart(@RequestBody Iterable<Cart> items){
+    @DeleteMapping(path = "/{pId}")
+    public Iterable<Cart> deleteCart(@PathVariable int pId) {
+        repo.deleteById(pId);
+        return repo.findAll();
+    }
+
+    @PostMapping(path = "add/items")
+    public Iterable<Cart> AddItemsToCart(@RequestBody Iterable<Cart> items) {
         return repo.saveAll(items);
     }
-  
 
+
+    @GetMapping(produces = "application/json")
+    @RequestMapping({"/validateLogin"})
+    public Users validateLogin() {
+        return new Users("User successfully authenticated");
+    }
 }
 
 

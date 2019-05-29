@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/user/")
 public class UserController {
 
     @Autowired
@@ -31,10 +31,10 @@ public class UserController {
 
     @GetMapping("{email}")
     @ResponseBody
-    public Optional<User> getOnebyemail(@PathVariable("email") String email) {
+    public User  getOnebyemail(@PathVariable String email, String password) {
         System.out.println("search user id");
 //        repo.findByEmail(email);
-        return repo.findByEmail(email);
+        return repo.findByEmail(email).get();
     }
 
 //  @GetMapping("/{uid}")
@@ -42,6 +42,10 @@ public class UserController {
 //        return repo.findById(uid).get();
 //    }
 
+    @GetMapping("users/{userId}")
+    public Optional<User> getOneProduct(@PathVariable int userId) {
+        return repo.findById(userId);
+    }
     @GetMapping
     public @ResponseBody
     Iterable<User> getUsers() {
