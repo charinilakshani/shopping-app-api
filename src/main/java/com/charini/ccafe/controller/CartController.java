@@ -37,7 +37,7 @@ public class CartController {
             cart.setQuantity(qty);
         }
         repo.save(cart);
-        System.out.println(cart.getUserId() + " added");
+        System.out.println(cart.getUserId() + " PID"+ cart.getpId() +"CartId"+  cart.getCartId() + " added");
 
         return cart;
     }
@@ -57,6 +57,12 @@ public class CartController {
     public Optional<Cart> getOneAddToCartProduct(@PathVariable("pId") int pid) {
         System.out.println("check Cart is exists or not");
         return repo.findById(pid);
+    }
+
+    @GetMapping("/byBoth/{userId}/{pId}")
+    public List<Cart> getByUserIdAndPId(@PathVariable  int userId,@PathVariable  int pId) {
+        System.out.println("check Cart is exists or not");
+        return repo.findCartsByUserIdAndPId(userId ,pId);
     }
 
     @GetMapping("/{userId}")
