@@ -60,10 +60,13 @@ public class CartController {
     }
 
     @GetMapping("/byBoth/{userId}/{pId}")
-    public List<Cart> getByUserIdAndPId(@PathVariable  int userId,@PathVariable  int pId) {
+    @ResponseBody
+    public Cart getByUserIdAndPId(@PathVariable  int userId,@PathVariable  int pId) {
         System.out.println("check Cart is exists or not");
-        return repo.findCartsByUserIdAndPId(userId ,pId);
+        return repo.findCartsByUserIdAndPId(userId ,pId).get();
     }
+
+
 
     @GetMapping("/{userId}")
     public List<Cart> getByUserId(@PathVariable("userId") int userId) {
