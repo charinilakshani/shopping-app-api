@@ -18,14 +18,21 @@ public class CheckOutController {
     @Autowired
     CheckOutRepository repo;
 
-    @PostMapping
-    public Iterable<CheckOut> AddItemsToCart(@RequestBody Iterable<CheckOut> products) {
-        return repo.saveAll(products);
-    }
+//    @PostMapping
+//    public Iterable<CheckOut> AddItemsToCart(@RequestBody Iterable<CheckOut> products) {
+//        return repo.saveAll(products);
+//    }
 
     @GetMapping("/{userId}")
     public List<CheckOut> getByUserId(@PathVariable("userId") int userId) {
         return repo.findAllByUserId(userId);
+    }
+
+
+    @PostMapping
+    public CheckOut adduser(@RequestBody CheckOut checkOut) {
+        repo.save(checkOut);
+        return checkOut ;
     }
 }
 
