@@ -35,7 +35,7 @@ public class ProductController {
         return repo.save(product);
     }
 
-    @GetMapping("getByProductName/{productCategory}")
+    @GetMapping("/getByProductName/{productCategory}")
     public Optional<Product> getByProductName(@PathVariable String productCategory)
     {
         return repo.getAllByProductCategory(productCategory);
