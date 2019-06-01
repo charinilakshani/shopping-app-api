@@ -73,10 +73,19 @@ public class CartController {
         return repo.findAllByUserId(userId);
     }
 
-    @DeleteMapping(path = "/{pId}")
-    public Iterable<Cart> deleteCart(@PathVariable int pId) {
-        repo.deleteById(pId);
+    @DeleteMapping(path = "/{cartId}")
+    public Iterable<Cart> deleteCart(@PathVariable int cartId) {
+        repo.deleteById(cartId);
+        System.out.println("deleted" + cartId);
         return repo.findAll();
+    }
+
+
+    @DeleteMapping
+    public List<Cart> Delete(@RequestBody List<Cart> carts) {
+        System.out.println("deleted" + carts);
+        repo.deleteAll();
+       return repo.findAll();
     }
 
     @PostMapping(path = "add/items")

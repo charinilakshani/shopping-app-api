@@ -17,7 +17,7 @@ public class CheckOut {
     private int pId;
 
     private String productName;
-
+    private  String productImage;
     private int price;
 
     public int getUserId() {
@@ -68,14 +68,24 @@ public class CheckOut {
         this.price = price;
     }
 
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
+
+
     @Override
     public String toString() {
-        return "Cart{" +
-                "userId=" + userId +
-                ", pId=" + pId +
-                ", cartId=" + cartId +
-                ", productName=" + productName +
+        return "CheckOut{" +
+                "cartId=" + cartId +
                 ", quantity=" + quantity +
+                ", userId=" + userId +
+                ", pId=" + pId +
+                ", productName='" + productName + '\'' +
+                ", productImage='" + productImage + '\'' +
                 ", price=" + price +
                 '}';
     }
