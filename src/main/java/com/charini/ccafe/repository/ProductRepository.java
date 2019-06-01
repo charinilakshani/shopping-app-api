@@ -11,5 +11,5 @@ public interface ProductRepository extends JpaRepository <Product, Integer> {
 
 
 
-    Optional<Product> getAllByProductName(String productName);
+    Optional<Product> getAllByProductCategory(String productCategory);
 }
