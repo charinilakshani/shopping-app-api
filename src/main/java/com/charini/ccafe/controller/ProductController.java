@@ -35,10 +35,11 @@ public class ProductController {
         return repo.save(product);
     }
 
-    @GetMapping("/getByProductName/{productCategory}")
-    public Optional<Product> getByProductName(@PathVariable String productCategory)
+    @GetMapping("/getByProductName/{category}")
+    public Iterable<Product> getAllByCategory(@PathVariable String category)
     {
-        return repo.getAllByProductCategory(productCategory);
+        System.out.println("jddjd" + category);
+        return repo.getAllByCategory(category);
     }
 
 

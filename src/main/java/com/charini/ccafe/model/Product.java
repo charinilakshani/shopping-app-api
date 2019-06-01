@@ -18,7 +18,7 @@ public class Product {
     private int quantity;
     private String description;
     private String image;
-    private String productCategory;
+
 
     public int getpId() {
         return pId;
@@ -76,13 +76,6 @@ public class Product {
         this.image = image;
     }
 
-    public String getProductCategory() {
-        return productCategory;
-    }
-
-    public void setProductCategory(String productCategory) {
-        this.productCategory = productCategory;
-    }
 
     @Override
     public String toString() {
@@ -94,7 +87,6 @@ public class Product {
                 ", quantity=" + quantity +
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +
-                ", productCategory='" + productCategory + '\'' +
                 '}';
     }
 }
