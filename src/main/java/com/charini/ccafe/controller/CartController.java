@@ -80,13 +80,13 @@ public class CartController {
         return repo.findAll();
     }
 
-
-    @DeleteMapping
-    public List<Cart> Delete(@RequestBody List<Cart> carts) {
-        System.out.println("deleted" + carts);
-        repo.deleteAll();
-       return repo.findAll();
-    }
+//
+//    @DeleteMapping
+//    public List<Cart> Delete(@RequestBody List<Cart> carts) {
+//        System.out.println("deleted" + carts);
+//        repo.deleteAll();
+//       return repo.findAll();
+//    }
 
     @PostMapping(path = "add/items")
     public Iterable<Cart> AddItemsToCart(@RequestBody Iterable<Cart> items) {

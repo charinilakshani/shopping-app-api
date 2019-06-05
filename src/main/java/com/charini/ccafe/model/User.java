@@ -15,6 +15,7 @@ public class User {
 	private String secondName;
 	private String email;
 	private String password;
+	private String type;
 
 	public int getUserId() {
 		return userId;
@@ -49,6 +50,14 @@ public class User {
 		this.password = password;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
 		return "User{" +
@@ -57,6 +66,7 @@ public class User {
 				", secondName='" + secondName + '\'' +
 				", email='" + email + '\'' +
 				", password='" + password + '\'' +
+				", type='" + type + '\'' +
 				'}';
 	}
 
