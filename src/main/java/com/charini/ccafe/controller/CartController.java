@@ -43,6 +43,31 @@ public class CartController {
         return cart;
     }
 
+    @PostMapping(path = "/fromMobile")
+    public Cart addItemForAndroid(@RequestBody Cart newItem) {
+        Cart cart = null;
+        for (Cart cartItem : getAllCarts()) {
+            //
+            if (Objects.equals(cartItem.getpId(), newItem.getpId()) &&
+                    Objects.equals(cartItem.getUserId(), newItem.getUserId())) {
+                cart = cartItem;
+            }
+        }
+
+        if (cart == null) {
+            cart = newItem;
+        } else {
+
+            int qty = newItem.getQuantity();
+            cart.setQuantity(qty);
+        }
+        repo.save(cart);
+        System.out.println(cart.getUserId() + " PID"+ cart.getpId() +"CartId"+  cart.getCartId() + " added");
+
+        return cart;
+    }
+
+
     @GetMapping
     public Iterable<Cart> getAllCarts() {
         System.out.println("get al cart");
