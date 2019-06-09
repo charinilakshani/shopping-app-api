@@ -73,19 +73,19 @@ public class CartController {
         return repo.findAllByUserId(userId);
     }
 
+
     @DeleteMapping(path = "/{cartId}")
-    public Iterable<Cart> deleteCart(@PathVariable int cartId) {
+    public  void deleteCart(@PathVariable int cartId) {
         repo.deleteById(cartId);
         System.out.println("deleted" + cartId);
-        return repo.findAll();
+
     }
 
 //
-//    @DeleteMapping
-//    public List<Cart> Delete(@RequestBody List<Cart> carts) {
-//        System.out.println("deleted" + carts);
-//        repo.deleteAll();
-//       return repo.findAll();
+//    @DeleteMapping(path="deleteAll/{id}")
+//    public  void deleteAll(@PathVariable int id) {
+//        System.out.println("deleted" + id);
+//        repo.deleteAllByUserId(id);
 //    }
 
     @PostMapping(path = "add/items")
@@ -98,6 +98,13 @@ public class CartController {
     @RequestMapping({"/validateLogin"})
     public Users validateLogin() {
         return new Users("User successfully authenticated");
+    }
+
+
+    @DeleteMapping("/deleleAll")
+    public Iterable<Cart> deleteAll(@RequestBody Iterable<Cart> items) {
+        repo.deleteAll(items);
+        return repo.findAll();
     }
 }
 
