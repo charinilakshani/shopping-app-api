@@ -11,5 +11,6 @@ import java.util.List;
 
 public interface CheckOutRepository extends JpaRepository<CheckOut, Integer> {
     List<CheckOut> findAllByUserId(int userId);
+    void deleteAllByUserId(int userId);
 }
 

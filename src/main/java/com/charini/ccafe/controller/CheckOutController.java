@@ -4,6 +4,7 @@ import com.charini.ccafe.model.Cart;
 import com.charini.ccafe.model.CheckOut;
 import com.charini.ccafe.repository.CheckOutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,5 +35,14 @@ public class CheckOutController {
 //        repo.save(checkOut);
 //        return checkOut ;
 //    }
+
+
+    @Transactional
+    @DeleteMapping("/deleteAll/{userId}")
+    public void deleteCheckOut(@PathVariable int userId ) {
+
+        repo.deleteAllByUserId(userId);
+
+    }
 }
 
