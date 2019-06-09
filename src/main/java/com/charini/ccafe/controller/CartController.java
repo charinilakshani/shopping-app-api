@@ -6,6 +6,7 @@ import com.charini.ccafe.model.Users;
 import com.charini.ccafe.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
@@ -101,10 +102,12 @@ public class CartController {
     }
 
 
-    @DeleteMapping("/deleleAll")
-    public Iterable<Cart> deleteAll(@RequestBody Iterable<Cart> items) {
-        repo.deleteAll(items);
-        return repo.findAll();
+    @Transactional
+    @DeleteMapping("/deleteAll/{userId}")
+    public void deleteCartItems(@PathVariable int userId ) {
+
+        repo.deleteAllByUserId(userId);
+
     }
 }
 
