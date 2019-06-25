@@ -26,9 +26,9 @@ public class ProductController {
     }
 
     @GetMapping("getByPid/{pId}")
-    public Optional<Product> getOneProduct(@PathVariable int pid) {
+    public Optional<Product> getOneProduct(@PathVariable int pId) {
 
-        return repo.findById(pid);
+        return repo.findById(pId);
     }
 
     @PutMapping
