@@ -27,6 +27,7 @@ public class ProductController {
 
     @GetMapping("getByPid/{pId}")
     public Optional<Product> getOneProduct(@PathVariable int pid) {
+
         return repo.findById(pid);
     }
 
