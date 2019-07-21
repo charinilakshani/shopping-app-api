@@ -16,6 +16,6 @@ public class PriceController {
     @ResponseBody
     public priceDetails getbyModelType(@PathVariable String model, @PathVariable  String damageType, @PathVariable  String damageArea) {
         System.out.println("check Cart is exists or not");
-        return repo.findAllByModelAndDamageTypeAAndDamageArea(model,damageType,damageArea).get();
+        return repo.findAllByModelAndDamageTypeAndDamageArea(model,damageType,damageArea).get();
     }
 }
