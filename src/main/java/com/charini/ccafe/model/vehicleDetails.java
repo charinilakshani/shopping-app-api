@@ -11,6 +11,7 @@ public class vehicleDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int dId;
     private  int claimId;
     private  int year;
     private  int policyNumber;
@@ -65,5 +66,13 @@ public class vehicleDetails {
 
     public void setColour(String colour) {
         this.colour = colour;
+    }
+
+    public int getdId() {
+        return dId;
+    }
+
+    public void setdId(int dId) {
+        this.dId = dId;
     }
 }
