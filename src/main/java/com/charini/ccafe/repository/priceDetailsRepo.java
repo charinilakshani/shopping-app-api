@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface priceDetailsRepo extends JpaRepository<priceDetails, Integer> {
 
-    Optional<priceDetails> findByModelAndAndDamageAreaAndAndDamageType(String model, String damageType);
+    Optional<priceDetails> findByModelAndAndDamageArea(String model, String damageType);
 }
