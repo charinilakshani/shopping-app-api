@@ -14,7 +14,7 @@ public class priceDetails {
     private  String model;
     private  String damageType;
     private  String damageArea;
-    private  String repireCost;
+    private  int repireCost;
     private  int  replaceCost;
 
     public int getId() {
@@ -49,11 +49,11 @@ public class priceDetails {
         this.damageArea = damageArea;
     }
 
-    public String getRepireCost() {
+    public int getRepireCost() {
         return repireCost;
     }
 
-    public void setRepireCost(String repireCost) {
+    public void setRepireCost(int repireCost) {
         this.repireCost = repireCost;
     }
 
