@@ -12,10 +12,10 @@ public class PriceController {
     @Autowired
     priceDetailsRepo repo;
 
-    @GetMapping("/byBoth/{model}/{damageType}/{damageArea}")
+    @GetMapping("/byBoth/{model}/{damageType}")
     @ResponseBody
-    public priceDetails getbyModelType(@PathVariable String model, @PathVariable  String damageType, @PathVariable  String damageArea) {
+    public priceDetails getbyModelType(@PathVariable String model, @PathVariable  String damageType) {
         System.out.println("check Cart is exists or not");
-        return repo.findByModelAndAndDamageAreaAndAndDamageType(model ,damageType,damageArea).get();
+        return repo.findByModelAndAndDamageAreaAndAndDamageType(model,damageType).get();
     }
 }
