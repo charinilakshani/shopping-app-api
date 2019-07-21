@@ -12,10 +12,6 @@ public class vehicleDetailsController {
     @Autowired
     VehicleDetailsRepo repo;
 
-
-
-
-
     @GetMapping("{claimId}")
     @ResponseBody
     public vehicleDetails getByClaimId(@PathVariable int claimId) {
@@ -23,6 +19,12 @@ public class vehicleDetailsController {
         return repo.findByClaimId(claimId).get();
     }
 
+    @GetMapping
+    public @ResponseBody
+    Iterable<vehicleDetails> getAll() {
+        System.out.println("Fetching all client");
+        return repo.findAll();
+    }
 
 
 }
